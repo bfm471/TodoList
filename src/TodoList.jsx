@@ -12,6 +12,10 @@ function TodoList() {
         document.getElementById("ip1").focus();
     }
 
+    const deleteTask = (index) => {
+        setTodos(todos.filter((todo, i) => i !== index));
+    }  
+
     return (
         <div id="todolistApp">
             <div className="header">
@@ -19,9 +23,9 @@ function TodoList() {
             </div>
             <fieldset>
                 <legend>Add todo</legend>
-                <form id="taskForm" onSubmit={handleForm}>
-                    Date <input id="ip1" type="text" onChange={event => setTask({...task, date: event.target.value})} value={task.date} />
-                    Descption <input type="text" onChange={event => setTask({...task, desc: event.target.value})} value={task.desc}></input>
+                <form onSubmit={handleForm}>
+                Date <input id="ip1" type="text" onChange={event => setTask({ ...task, date: event.target.value })} value={task.date} />
+                Description <input type="text" onChange={event => setTask({ ...task, desc: event.target.value })} value={task.desc} />
                 <input type="submit" value="Add task" />
                 </form>
             </fieldset>
@@ -35,6 +39,7 @@ function TodoList() {
                         <tr key={index}>
                             <td>{todo.date}</td>
                             <td>{todo.desc}</td>
+                            <td><button onClick={() => deleteTask(index)}>Delete</button></td>
                         </tr>
                     ))}
                 </tbody>
