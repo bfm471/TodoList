@@ -14,7 +14,7 @@ function TodoList() {
     }
 
     const deleteTask = (index) => {
-        setTodos(todos.filter((todo, i) => i !== index));
+        setTodos(todos.filter((_, i) => i !== index)); //kun parametria ei aiota käyttää, sen voi mielellään merkitä "_"
     }
 
     return (
